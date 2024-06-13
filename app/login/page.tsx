@@ -1,6 +1,8 @@
 import React from 'react'
 
 function Login() {
+  console.log('Login page');
+
   return (
     <section className="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
       <div className="container px-6 py-24 mx-auto lg:py-32">
