@@ -20,7 +20,7 @@ function Navbar() {
 
                 <div className="hidden md:flex md:items-center">
                     <Link href={'/home'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300">Home</a></Link>
-                    <Link href={'/task'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> About</a></Link>
+                    <Link href={'/space/task'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> About</a></Link>
                     <Link href={'/pricing'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Pricing</a></Link>
                     <Link href={'/contact'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Contact</a></Link>
                 </div>
