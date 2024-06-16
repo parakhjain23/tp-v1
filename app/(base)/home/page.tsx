@@ -24,6 +24,7 @@ export default function Home() {
               </a>
             </div>
           </div>
+
           <svg className="fill-gray-900" viewBox="0 0 1440 57" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1440 0H0V57C720 0 1440 57 1440 57V0Z" />
           </svg>
