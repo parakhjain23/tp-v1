@@ -1,11 +1,9 @@
-// 'user server';
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
 
 function Custom404() {
   console.log('404 page');
   return (
-    <section className="bg-white py-20 dark:bg-dark-2 lg:py-[110px] h-screen">
+    <section className="bg-white py-20 dark:bg-dark-2 dark:bg-gray-900 lg:py-[110px] h-screen">
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center -mx-4">
           {/* <div className="w-full px-4 md:w-5/12 lg:w-6/12">
@@ -17,7 +15,7 @@ function Custom404() {
             />
           </div>
         </div> */}
-          <div className="w-full px-4 md:w-7/12 lg:w-6/12 xl:w-5/12">
+          <div className="w-full px-9 md:w-7/12 lg:w-6/12 xl:w-5/12">
             <div>
               <div className="mb-8">
                 <svg
@@ -59,12 +57,8 @@ function Custom404() {
                 Oops! The page you are looking for does not exist. It might have
                 been moved or deleted.
               </p>
-              <Link href='/home' legacyBehavior={true}>
-                <a
-                  className="py-3 text-base font-medium text-white transition rounded-md bg-dark px-7 hover:bg-primary"
-                >
-                  Go To Home
-                </a>
+              <Link href='/home' legacyBehavior={true} className='m-0 p-0'>
+                <button className="w-full px-5 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:w-auto hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80" aria-label="Get Started">Go To Home</button>
               </Link>
 
             </div>
