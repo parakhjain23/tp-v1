@@ -33,7 +33,7 @@ export default function Home() {
         <section className="container px-6 py-8 mx-auto lg:py-16" id="about">
           <div className="lg:flex lg:items-center lg:-mx-4">
             <div className="lg:w-1/2 lg:px-4">
-              <h3 className="text-xl font-medium text-gray-300 md:text-2xl lg:text-3xl">We create awesome Product-spaces & Tasks.</h3>
+              <h3 className="text-xl font-medium dark:text-gray-300 md:text-2xl lg:text-3xl">We create awesome Product-spaces & Tasks.</h3>
               <p className="mt-6 text-gray-500 ">Effortlessly organize your projects and tasks with our intuitive application, offering customizable product spaces, task management, and ready-to-use templates for seamless collaboration.</p>
               <button className="flex items-center mt-8 -mx-2 text-blue-400">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
