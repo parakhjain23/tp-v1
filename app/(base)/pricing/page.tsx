@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900 h-screen">
             <div className="container px-6 py-8 mx-auto">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div>
