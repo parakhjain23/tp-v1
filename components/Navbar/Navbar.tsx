@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import BaseHamburger from '../BaseHamburger/BaseHamburger';
+import Hamburger from '../Hamburger/Hamburger';
 
 function Navbar() {
     return (
@@ -10,14 +12,6 @@ function Navbar() {
                     </svg>
                 </a>
 
-                <button className="sm:hidden">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </span>
-                </button>
-
                 <div className="hidden md:flex md:items-center">
                     <Link href={'/home'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300">Home</a></Link>
                     <Link href={'/space/task'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> About</a></Link>
@@ -25,13 +19,18 @@ function Navbar() {
                     <Link href={'/contact'} legacyBehavior={true}><a href="#" className="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Contact</a></Link>
                 </div>
 
-                <div className="hidden sm:flex">
-                    <Link href="/login">
-                        <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Login</div>
-                    </Link>
-                    <Link href="/signup">
-                        <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Sign Up</div>
-                    </Link>
+                <div className='flex gap-7 items-center'>
+                    <div className="hidden sm:flex">
+                        <Link href="/login">
+                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Login</div>
+                        </Link>
+                        <Link href="/signup">
+                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Sign Up</div>
+                        </Link>
+                    </div>
+                    <div className="md:hidden">
+                        <BaseHamburger />
+                    </div>
                 </div>
             </nav>
         </header>
