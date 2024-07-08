@@ -1,15 +1,16 @@
-import Head from "next/head";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Task Pro',
+  description: 'This is the home page of Task Pro website.'
+}
 
 export default function Home() {
   console.log('Home page');
 
   return (
     <div>
-      <Head>
-        <title>Next.js Template</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
         <section>
           <div className="relative grid w-full bg-gray-900 h-96 lg:h-[32rem] place-items-center">
