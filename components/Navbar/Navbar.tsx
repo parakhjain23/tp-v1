@@ -22,10 +22,10 @@ function Navbar() {
                 <div className='flex gap-7 items-center'>
                     <div className="hidden sm:flex">
                         <Link href="/login">
-                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Login</div>
+                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-secondary ml-2"> Login</div>
                         </Link>
                         <Link href="/signup">
-                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark ml-2"> Sign Up</div>
+                            <div className="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-secondary ml-2"> Sign Up</div>
                         </Link>
                     </div>
                     <div className="md:hidden">
