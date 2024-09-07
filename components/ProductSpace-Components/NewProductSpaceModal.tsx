@@ -24,14 +24,15 @@ function NewProductSpaceModal({
                     Edit
                 </button>}
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent onSubmit={(e)=>{e.preventDefault(),console.log(e, 'parakh')}} className="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>{!isEdit ? 'Create space' : 'Edit space'}</DialogTitle>
                     <DialogDescription>
                         Personalize your Product Space
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <form>
+                    <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
                             Name
@@ -44,10 +45,12 @@ function NewProductSpaceModal({
                         </Label>
                         <Input id="username" value="@peduarte" className="col-span-3" />
                     </div>
-                </div>
-                <DialogFooter>
+                    </div>
+                    <DialogFooter>
                     <Button type="submit">{!isEdit ? 'Create' : 'Save changes'}</Button>
                 </DialogFooter>
+                </form>
+                
             </DialogContent>
         </Dialog>
 
