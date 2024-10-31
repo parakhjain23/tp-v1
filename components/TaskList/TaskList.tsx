@@ -1,6 +1,8 @@
 'use client'
 import { Grid2x2, List } from 'lucide-react';
 import React, { useState } from 'react';
+import TaskEditModal from '../Modals/TaskEditModal';
+import { MODALS, toggleModal } from '@/utils/utility';
 
 const statuses = [
   {
@@ -39,8 +41,11 @@ function TaskList() {
     }))
     .filter((status) => status.tasks.length > 0); // Hide statuses with no matching tasks
 
+  const handleEditTask = () => toggleModal(MODALS.taskEditModal)
+
   return (
     <div className="p-4 bg-gray-900 text-white w-full min-h-screen">
+      <TaskEditModal />
       <div className="flex justify-between items-center mb-5">
         <h2 className="text-2xl font-bold">Task List</h2>
         <ul className="menu menu-horizontal bg-base-200 rounded-box">
@@ -75,6 +80,7 @@ function TaskList() {
                 {status.tasks.map((task, index) => (
                   <li
                     key={index}
+                    onClick={handleEditTask}
                     className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700"
                   >
                     <span className="block font-medium">{task.name}</span>
@@ -92,7 +98,8 @@ function TaskList() {
             status.tasks.map((task, index) => (
               <div
                 key={`${status.title}-${index}`}
-                className="flex items-start p-4 rounded-lg bg-base-100 shadow"
+                onClick={handleEditTask}
+                className="flex items-start p-4 rounded-lg bg-base-100 shadow hover:bg-base-200"
               >
                 <div className="w-1/4">
                   <span className="text-sm font-semibold bg-gray-800 text-gray-200 px-3 py-1 rounded-lg">

@@ -1,15 +1,24 @@
 // Sidebar.js
 import React from 'react';
 import Hamburger from '../Hamburger/Hamburger';
+import { ChevronDown, Settings } from 'lucide-react';
 
 function Sidebar() {
     return (
         <main className="flex min-h-screen flex-col justify-between">
-            <div className="drawer md:drawer-open dark:bg-gray-800 bg-white" id="default-sidebar">
+            <div className="drawer sm:drawer-open dark:bg-gray-800 bg-white" id="default-sidebar">
                 <Hamburger />
-                <div className="drawer-side bg-white">
+                <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-100 text-base-content min-h-full w-80 p-4">
+                        <div className="dropdown dropdown-bottom cursor-pointer">
+                            <div tabIndex={0} role="heading" className="m-1 flex items-center">Product Space <ChevronDown size={16} className='ml-2' /></div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-300 rounded-box z-[1] w-52 p-2 shadow">
+                                <li><a>Product Space 1</a></li>
+                                <li><a>Product Space 2</a></li>
+                                <li><a><Settings size={16} />Settings</a></li>
+                            </ul>
+                        </div>
                         <div className="flex flex-col gap-5 flex-1 mt-6">
                             <nav className="-mx-3 space-y-3 ">
                                 <a className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" href="#">

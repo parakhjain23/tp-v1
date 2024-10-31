@@ -31,3 +31,13 @@ export const toggleSidebar = (sidebarId: string) => {
         }
     }
 };
+
+export const toggleModal = (modalId: string) => {
+    const modal: any = document.getElementById(modalId);
+    if(modal){
+        modal.showModal();
+    }
+}
+export const MODALS = {
+    taskEditModal: "task-edit-modal"
+}

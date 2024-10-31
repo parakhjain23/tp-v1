@@ -6,11 +6,11 @@ function Hamburger() {
     return (
         <>
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
+            <div className="drawer-content bg-gray-900 h-screen">
                 {/* Page content here */}
                 <label htmlFor="my-drawer" className="drawer-button">
                     <div
-                        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        className="sm:hidden pt-8 pl-2 cursor-pointer"
                     >
                         <span className="sr-only">Open sidebar</span>
                         <svg
