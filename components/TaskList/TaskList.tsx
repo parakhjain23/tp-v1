@@ -1,6 +1,6 @@
 'use client'
 import { Grid2x2, List } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
 
 const statuses = [
   {
@@ -27,10 +27,21 @@ const statuses = [
 ];
 
 function TaskList() {
-  const [view, setView] = React.useState(0);
+  const [view, setView] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredStatuses = statuses
+    .map((status) => ({
+      ...status,
+      tasks: status.tasks.filter((task) =>
+        task.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    }))
+    .filter((status) => status.tasks.length > 0); // Hide statuses with no matching tasks
+
   return (
     <div className="p-4 bg-gray-900 text-white w-full min-h-screen">
-      <div className='flex justify-between items-center mb-5'>
+      <div className="flex justify-between items-center mb-5">
         <h2 className="text-2xl font-bold">Task List</h2>
         <ul className="menu menu-horizontal bg-base-200 rounded-box">
           <li>
@@ -45,29 +56,44 @@ function TaskList() {
           </li>
         </ul>
       </div>
-      {view === 0 ? <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {statuses.map((status) => (
-          <div key={status.title} className="bg-base-100 rounded-lg shadow p-4">
-            <h3 className="text-xl font-semibold mb-3">{status.title}</h3>
-            <ul className="space-y-3">
-              {status.tasks.map((task, index) => (
-                <li
-                  key={index}
-                  className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700"
-                >
-                  <span className="block font-medium">{task.name}</span>
-                  <span className="text-gray-400 text-sm">{task.description}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div> : 
-      <div className="bg-gray-900 text-white w-full min-h-screen">
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search tasks..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="input input-bordered bg-base-200 text-white"
+        />
+      </div>
+      {view === 0 ? (
+        // Grid View
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {filteredStatuses.map((status) => (
+            <div key={status.title} className="bg-base-100 rounded-lg shadow p-4">
+              <h3 className="text-xl font-semibold mb-3">{status.title}</h3>
+              <ul className="space-y-3">
+                {status.tasks.map((task, index) => (
+                  <li
+                    key={index}
+                    className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700"
+                  >
+                    <span className="block font-medium">{task.name}</span>
+                    <span className="text-gray-400 text-sm">{task.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        // List View
         <div className="space-y-3">
-          {statuses.map((status) =>
+          {filteredStatuses.map((status) =>
             status.tasks.map((task, index) => (
-              <div key={`${status.title}-${index}`} className="flex items-start p-4 rounded-lg bg-base-100 shadow">
+              <div
+                key={`${status.title}-${index}`}
+                className="flex items-start p-4 rounded-lg bg-base-100 shadow"
+              >
                 <div className="w-1/4">
                   <span className="text-sm font-semibold bg-gray-800 text-gray-200 px-3 py-1 rounded-lg">
                     {status.title}
@@ -81,7 +107,7 @@ function TaskList() {
             ))
           )}
         </div>
-      </div>}
+      )}
     </div>
   );
 }
