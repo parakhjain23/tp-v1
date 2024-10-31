@@ -31,7 +31,6 @@ const statuses = [
 function TaskList() {
   const [view, setView] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-
   const filteredStatuses = statuses
     .map((status) => ({
       ...status,
@@ -48,15 +47,15 @@ function TaskList() {
       <TaskEditModal />
       <div className="flex justify-between items-center mb-5">
         <h2 className="text-2xl font-bold">Task List</h2>
-        <ul className="menu menu-horizontal bg-base-200 rounded-box">
+        <ul className="menu menu-horizontal bg-base-100 rounded-box p-0">
           <li>
             <a onClick={() => setView(1)}>
-              <List />
+              <List size={18}/>
             </a>
           </li>
           <li>
             <a onClick={() => setView(0)}>
-              <Grid2x2 color="#ffffff" />
+              <Grid2x2 size={18}/>
             </a>
           </li>
         </ul>
@@ -93,13 +92,13 @@ function TaskList() {
         </div>
       ) : (
         // List View
-        <div className="space-y-3">
+        <div className="space-y-2">
           {filteredStatuses.map((status) =>
             status.tasks.map((task, index) => (
               <div
                 key={`${status.title}-${index}`}
                 onClick={handleEditTask}
-                className="flex items-start p-4 rounded-lg bg-base-100 shadow hover:bg-base-200"
+                className="flex items-start p-1 rounded-lg bg-base-100 shadow hover:bg-base-200"
               >
                 <div className="w-1/4">
                   <span className="text-sm font-semibold bg-gray-800 text-gray-200 px-3 py-1 rounded-lg">
