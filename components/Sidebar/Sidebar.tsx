@@ -5,11 +5,11 @@ import Hamburger from '../Hamburger/Hamburger';
 function Sidebar() {
     return (
         <main className="flex min-h-screen flex-col justify-between">
-            <div className="drawer md:drawer-open" id="default-sidebar">
+            <div className="drawer md:drawer-open dark:bg-gray-800 bg-white" id="default-sidebar">
                 <Hamburger />
-                <div className="drawer-side">
+                <div className="drawer-side bg-white">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                    <ul className="menu bg-base-100 text-base-content min-h-full w-80 p-4">
                         <div className="flex flex-col gap-5 flex-1 mt-6">
                             <nav className="-mx-3 space-y-3 ">
                                 <a className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" href="#">
