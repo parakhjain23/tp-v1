@@ -1,6 +1,6 @@
 'use client'
-import { Grid2x2, List } from 'lucide-react';
-import React, { useState } from 'react';
+import { Grid2x2, List, Plus } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import TaskEditModal from '../Modals/TaskEditModal';
 import { MODALS, toggleModal } from '@/utils/utility';
 
@@ -41,6 +41,21 @@ function TaskList() {
     .filter((status) => status.tasks.length > 0); // Hide statuses with no matching tasks
 
   const handleEditTask = () => toggleModal(MODALS.taskEditModal)
+  const handleCreateTask = () => toggleModal(MODALS.taskEditModal);
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+        if (e.key === 'c' || e.keyCode === 67) {
+            handleCreateTask();  // Call handleCreateTask function
+        }
+    };
+
+    // Attach the event listener when the component mounts
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+        window.removeEventListener('keydown', handleKeyPress);
+    };
+}, []);
 
   return (
     <div className="p-4 bg-gray-900 text-white w-full min-h-screen">
@@ -50,12 +65,12 @@ function TaskList() {
         <ul className="menu menu-horizontal bg-base-100 rounded-box p-0">
           <li>
             <a onClick={() => setView(1)}>
-              <List size={18}/>
+              <List size={18} />
             </a>
           </li>
           <li>
             <a onClick={() => setView(0)}>
-              <Grid2x2 size={18}/>
+              <Grid2x2 size={18} />
             </a>
           </li>
         </ul>
@@ -74,7 +89,10 @@ function TaskList() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {filteredStatuses.map((status) => (
             <div key={status.title} className="bg-base-100 rounded-lg shadow p-4">
-              <h3 className="text-xl font-semibold mb-3">{status.title}</h3>
+              <div className='flex justify-between items-center  mb-3'>
+                <h3 className="text-xl font-semibold">{status.title}</h3>
+                <Plus size={16} className='cursor-pointer' onClick={() => handleCreateTask()} />
+              </div>
               <ul className="space-y-3">
                 {status.tasks.map((task, index) => (
                   <li
