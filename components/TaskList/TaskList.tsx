@@ -45,12 +45,11 @@ function TaskList() {
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-        if (e.key === 'c' || e.keyCode === 67) {
+        // Check if the 'c' key is pressed without any modifiers (Ctrl, Shift, Alt, Meta)
+        if (e.key === 'c' && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
             handleCreateTask();  // Call handleCreateTask function
         }
     };
-
-    // Attach the event listener when the component mounts
     window.addEventListener('keydown', handleKeyPress);
     return () => {
         window.removeEventListener('keydown', handleKeyPress);
@@ -60,8 +59,8 @@ function TaskList() {
   return (
     <div className="p-4 bg-gray-900 text-white w-full min-h-screen">
       <TaskEditModal />
-      <div className="flex justify-between items-center mb-5">
-        <h2 className="text-2xl font-bold">Task List</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="font-bold">Task List</h2>
         <ul className="menu menu-horizontal bg-base-100 rounded-box p-0">
           <li>
             <a onClick={() => setView(1)}>
@@ -75,6 +74,7 @@ function TaskList() {
           </li>
         </ul>
       </div>
+      <div className='divider m-1' />
       <div className="mb-4">
         <input
           type="text"
@@ -88,9 +88,9 @@ function TaskList() {
         // Grid View
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {filteredStatuses.map((status) => (
-            <div key={status.title} className="bg-base-100 rounded-lg shadow p-4">
-              <div className='flex justify-between items-center  mb-3'>
-                <h3 className="text-xl font-semibold">{status.title}</h3>
+            <div key={status.title} className="bg-base-100 rounded-lg shadow p-3">
+              <div className='flex justify-between items-center mb-3'>
+                <h3 className="font-semibold">{status.title}</h3>
                 <Plus size={16} className='cursor-pointer' onClick={() => handleCreateTask()} />
               </div>
               <ul className="space-y-3">
@@ -116,7 +116,7 @@ function TaskList() {
               <div
                 key={`${status.title}-${index}`}
                 onClick={handleEditTask}
-                className="flex items-start p-1 rounded-lg bg-base-100 shadow hover:bg-base-200"
+                className="flex items-center p-1 rounded-lg bg-base-100 shadow hover:bg-base-200"
               >
                 <div className="w-1/4">
                   <span className="text-sm font-semibold bg-gray-800 text-gray-200 px-3 py-1 rounded-lg">
@@ -124,7 +124,7 @@ function TaskList() {
                   </span>
                 </div>
                 <div className="w-3/4">
-                  <h4 className="text-lg font-medium">{task.name}</h4>
+                  <h4 className="">{task.name}</h4>
                   <p className="text-gray-400 text-sm">{task.description}</p>
                 </div>
               </div>
