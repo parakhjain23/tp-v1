@@ -19,8 +19,8 @@ function Sidebar() {
                                 <li><a><Settings size={16} />Settings</a></li>
                             </ul>
                         </div>
-                        <div className="flex flex-col gap-5 flex-1 mt-6">
-                            <nav className="-mx-3 space-y-3 ">
+                        <div className="flex flex-col gap-4 flex-1 mt-2">
+                            <nav className="-mx-3 space-y-2">
                                 <a className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -82,7 +82,7 @@ function Sidebar() {
                                     </button>
                                 </div>
 
-                                <nav className="mt-4 -mx-3 space-y-3 ">
+                                <nav className="-mx-3 space-y-2 mt-2">
                                     <button className="flex items-center justify-between w-full px-3 py-2 text-xs font-medium text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
                                         <div className="flex items-center gap-x-2 ">
                                             <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
