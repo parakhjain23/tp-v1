@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
-import ProductSpaceReducer from "./ProductSpace-redux/ProductSpace-reducer.tsx";
+import ProductSpaceReducer from "./ProductSpace/ProductSpace-reducer.jsx";
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

@@ -1,15 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface CounterState {
-  value: number
-}
-
-const initialState: CounterState = {
-  value: 0,
-}
+const initialState: User = {
+};
 
 export const counterSlice = createSlice({
-  name: 'ProductSpace',
+  name: 'User',
   initialState,
   reducers: {
     
