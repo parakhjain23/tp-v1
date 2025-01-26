@@ -1,6 +1,6 @@
 import axios from "./interceptor"
 
-const URL = process.env.REACT_APP_API_BASE_URL
+const URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL
 
 const getOrCreateUserApi = async (data: { email: string }) => {
     try {
