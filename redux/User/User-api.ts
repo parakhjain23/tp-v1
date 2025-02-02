@@ -1,28 +1,63 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { store } from "../store";
 
 export const userApi = createApi({
-    reducerPath: 'user', // A unique key for the API slice
-    baseQuery: fetchBaseQuery({
-      baseUrl: 'https://dummyapi.com/api', // Replace with your actual base URL
+  reducerPath: 'userApi', // Changed to avoid conflict with user reducer
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:6000/',
+  }),
+  endpoints: (builder) => ({
+    getUserDetails: builder.query({
+      query: () => '/authenticate',
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          // Store the user details, product spaces and team mappings in the user reducer
+          const currentState = store.getState().user.userDetails;
+          dispatch({
+            type: 'User/userDetails',
+            payload: {
+              ...currentState,
+              [data.userDetails.id]: data.userDetails
+            }
+          });
+          dispatch({
+            type: 'User/userProductSpaces', 
+            payload: data.userProductSpaces
+          });
+          dispatch({
+            type: 'User/userTeamMappings',
+            payload: data.userTeamMappings
+          });
+        } catch (error) {
+          console.error('Error fetching user details:', error);
+        }
+      }
     }),
-    endpoints: (builder) => ({
-      // Dummy GET request to fetch data
-      getProductSpaces: builder.query({
-        query: () => '/productSpaces', // Replace with your endpoint
+    createProductSpace: builder.mutation({
+      query: (newProductSpace) => ({
+        url: '/productSpaces',
+        method: 'POST',
+        body: newProductSpace,
       }),
-      // Dummy POST request to add data
-      createProductSpace: builder.mutation({
-        query: (newProductSpace) => ({
-          url: '/productSpaces', // Replace with your endpoint
-          method: 'POST',
-          body: newProductSpace,
-        }),
-      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          // Store the new product space in the productSpace reducer
+          dispatch({
+            type: 'ProductSpace/addProductSpace',
+            payload: data
+          });
+        } catch (error) {
+          console.error('Error creating product space:', error);
+        }
+      }
     }),
-  });
-  
-  // Export hooks for the queries and mutations
-  export const {
-    useGetProductSpacesQuery,
-    useCreateProductSpaceMutation,
-  } = userApi;
+  }),
+});
+
+// Export hooks for the queries and mutations
+export const {
+  useGetUserDetailsQuery,
+  useCreateProductSpaceMutation,
+} = userApi;

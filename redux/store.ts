@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
-import ProductSpaceReducer from "./ProductSpace/ProductSpace-reducer.jsx";
+import ProductSpaceReducer from "./ProductSpace/ProductSpace-reducer";
+import UserReducer from './User/User-reducer';
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
@@ -29,7 +30,8 @@ const storage = typeof window !== "undefined" ? createWebStorage("local") : crea
 const persistConfig = { key: 'root', storage };
 
 const rootReducer = combineReducers({
-    productSpace: ProductSpaceReducer
+    productSpace: ProductSpaceReducer,
+    user: UserReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
